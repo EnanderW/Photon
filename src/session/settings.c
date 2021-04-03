@@ -13,6 +13,7 @@
 #define MAX_PLAYERS else if (compare_key(buffer, "max-players", 11))
 #define COMPRESSION_THRESHOLD else if (compare_key(buffer, "compression-threshold", 21))
 #define PREVENT_PROXY_CONNECTIONS else if (compare_key(buffer, "prevent-proxy-connections", 25))
+#define BRIDGE_PASSWORD else if (compare_key(buffer, "bridge-password", 15))
 #define SERVER_ICON else if (compare_key(buffer, "server-icon", 11))
 #define STATUS_NAME else if (compare_key(buffer, "status-name", 11))
 #define STATUS_SAMPLE else if (compare_key(buffer, "status-sample", 13))
@@ -49,6 +50,7 @@ static void create_settings_file(const char *path) {
     fputs("main-server: lobby\n", file);
     fputs("max-players: 5000\n", file);
     fputs("compression-threshold: 256\n", file);
+    fputs("bridge-password: thisisagreatpassword\n", file);
     fputs("prevent-proxy-connections: false\n", file);
     fputs("server-icon: server-icon.png\n", file);
     fputs("status-sample: { \"name\": \"Photon server!\", \"id\": \"7c8896e2-8c7b-45ef-bb08-8c8e64528d0a\" }\n", file);
@@ -104,6 +106,9 @@ static void load_config(FILE *file) {
         }
         PREVENT_PROXY_CONNECTIONS {
             settings.prevent_proxy_connections = strcmp("true", value) ? true : false;
+        }
+        BRIDGE_PASSWORD {
+            strcpy(settings.bridge_password, value);
         }
         MAX_PLAYERS {
             settings.max_connections = atoi(value);
