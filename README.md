@@ -5,6 +5,10 @@ This is my first project in C, it works on Windows and Linux. If you have any in
 do not hesitate to send it to me, I would love to know what it is.
 
 ## Using Photon
+
+NOTE: This project should DEFINITELY not be used seriously right now. It needs to be thoroughly tested first. I have only tested it
+with two players and two minecraft-servers. I have no idea how fast it is, but I would really like to know. Problem is that I do not know how I would benchmark this.
+
 In order to use Photon, you will have to build it yourself.
 
 Requirements: (I think this is it?)
